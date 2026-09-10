@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Bibi014 Rádio — música, informação e companhia durante sua viagem.">
+  <title>Bibi014 Rádio</title>
+
+  <style>
+    :root{
+      --black:#000000;
+      --yellow:#FFC72C;
+      --white:#FFFFFF;
+      --gray:#151515;
+      --gray2:#222222;
+      --muted:#bdbdbd;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:linear-gradient(180deg,#000 0%,#111 100%);
+      color:var(--white);
+      min-height:100vh;
+    }
+
+    .container{
+      width:min(960px,92%);
+      margin:auto;
+    }
+
+    header{
+      padding:24px 0 12px;
+      text-align:center;
+    }
+
+    .logo{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:220px;
+      padding:10px 20px;
+      border:3px solid var(--yellow);
+      border-radius:14px;
+      color:var(--yellow);
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:.5px;
+      box-shadow:0 0 20px rgba(255,199,44,.18);
+    }
+
+    .hero{
+      text-align:center;
+      padding:30px 0 20px;
+    }
+
+    .onair{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#191919;
+      border:1px solid #333;
+      border-radius:30px;
+      padding:8px 15px;
+      color:var(--yellow);
+      font-weight:800;
+      font-size:13px;
+      text-transform:uppercase;
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:#ff2b2b;
+      box-shadow:0 0 12px #ff2b2b;
+      animation:pulse 1.4s infinite;
+    }
+
+    @keyframes pulse{
+      50%{opacity:.35;transform:scale(.8)}
+    }
+
+    h1{
+      font-size:clamp(36px,8vw,70px);
+      margin:18px 0 8px;
+      line-height:1;
+    }
+
+    h1 span{color:var(--yellow)}
+
+    .subtitle{
+      color:#ddd;
+      font-size:18px;
+      margin-bottom:25px;
+    }
+
+    .player{
+      background:var(--gray);
+      border:1px solid #303030;
+      border-radius:22px;
+      padding:25px;
+      max-width:680px;
+      margin:0 auto;
+      box-shadow:0 15px 50px rgba(0,0,0,.45);
+    }
+
+    .now{
+      color:var(--muted);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:7px;
+    }
+
+    .program{
+      font-size:25px;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    audio{
+      width:100%;
+      height:48px;
+      accent-color:var(--yellow);
+    }
+
+    .hint{
+      margin-top:12px;
+      color:#aaa;
+      font-size:13px;
+    }
+
+    .buttons{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      max-width:680px;
+      margin:18px auto 0;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      border-radius:13px;
+      text-decoration:none;
+      font-weight:900;
+      transition:.2s;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+
+    .primary{
+      background:var(--yellow);
+      color:#000;
+    }
+
+    .secondary{
+      background:#191919;
+      color:#fff;
+      border:1px solid #333;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin:35px 0;
+    }
+
+    .card{
+      background:var(--gray);
+      border:1px solid #292929;
+      border-radius:18px;
+      padding:22px 16px;
+      text-align:center;
+    }
+
+    .icon{font-size:30px;margin-bottom:10px}
+    .card h2{font-size:18px;margin-bottom:7px}
+    .card p{font-size:14px;color:#aaa;line-height:1.45}
+
+    .promo{
+      background:var(--yellow);
+      color:#000;
+      border-radius:20px;
+      padding:25px;
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .promo h2{font-size:27px;margin-bottom:8px}
+    .promo strong{font-size:20px}
+
+    footer{
+      text-align:center;
+      color:#888;
+      font-size:13px;
+      padding:10px 0 35px;
+      line-height:1.6;
+    }
+
+    footer b{color:var(--yellow)}
+
+    @media(max-width:650px){
+      .buttons,.cards{grid-template-columns:1fr}
+      .player{padding:20px}
+      .logo{font-size:23px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <header>
+      <div class="logo">BIBI014 RÁDIO</div>
+    </header>
+
+    <section class="hero">
+      <div class="onair">
+        <span class="dot"></span>
+        No ar
+      </div>
+
+      <h1>Sua viagem fica <span>melhor</span> com a Bibi014!</h1>
+      <p class="subtitle">Música, informação e companhia durante sua viagem.</p>
+
+      <div class="player">
+        <div class="now">🎧 Bibi014 Rádio</div>
+        <div class="program" id="program">Bibi014 Hits</div>
+
+        <!--
+          COLOQUE SEUS ÁUDIOS NA PASTA "audio" E ALTERE A LISTA
+          NO JAVASCRIPT ABAIXO.
+        -->
+        <audio id="radioPlayer" controls preload="metadata">
+          Seu navegador não suporta o player de áudio.
+        </audio>
+
+        <p class="hint">▶️ Toque no play para começar a ouvir.</p>
+      </div>
+
+      <div class="buttons">
+        <!-- Troque pelo link real do seu aplicativo -->
+        <a class="btn primary" href="https://conecta.bio/bibi" target="_blank" rel="noopener">
+          📲 BAIXAR / ABRIR APP
+        </a>
+
+        <!-- Troque pelo link real da sua página de atendimento, se desejar -->
+        <a class="btn secondary" href="https://conecta.bio/bibi" target="_blank" rel="noopener">
+          🚗 PEDIR CORRIDA PELO APP
+        </a>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <div class="icon">🎵</div>
+        <h2>Música</h2>
+        <p>Uma seleção para deixar sua viagem mais agradável.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎁</div>
+        <h2>2% Cashback</h2>
+        <p>Ganhe 2% de saldo em cada corrida para usar nas próximas.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⭐</div>
+        <h2>5% OFF</h2>
+        <p>Desconto de 5% sem precisar usar cupom.</p>
+      </div>
+    </section>
+
+    <section class="promo">
+      <h2>🚗 Vai sair?</h2>
+      <p>Abra o aplicativo Bibi014 e faça seu pedido.</p>
+      <br>
+      <strong>Corridas a partir de R$ 9,40</strong>
+    </section>
+
+    <footer>
+      <b>Bibi014 Passageiros</b><br>
+      Barra Bonita • Igaraçu do Tietê • Região • Jaú<br>
+      Sua viagem, do seu jeito.
+    </footer>
+
+  </main>
+
+  <script>
+    /*
+      ================================
+      PLAYLIST DA BIBI014 RÁDIO
+      ================================
+
+      Crie uma pasta chamada "audio" junto deste HTML.
+
+      Exemplo:
+        /index.html
+        /audio/musica01.mp3
+        /audio/vinheta01.mp3
+        /audio/musica02.mp3
+
+      Depois coloque os nomes abaixo na ordem desejada.
+    */
+
+    const playlist = [
+      { file: "audio/musica01.mp3", title: "Bibi014 Hits" },
+      { file: "audio/vinheta01.mp3", title: "Vinheta Bibi014" },
+      { file: "audio/musica02.mp3", title: "Bibi014 Hits" },
+      { file: "audio/chamada01.mp3", title: "Mensagem Bibi014" },
+      { file: "audio/musica03.mp3", title: "Bibi014 Hits" },
+      { file: "audio/vinheta02.mp3", title: "Bibi014 Rádio" }
+    ];
+
+    const player = document.getElementById("radioPlayer");
+    const program = document.getElementById("program");
+    let current = 0;
+
+    function loadTrack(index, autoplay=false){
+      if(!playlist.length) return;
+
+      current = (index + playlist.length) % playlist.length;
+      player.src = playlist[current].file;
+      program.textContent = playlist[current].title;
+
+      if(autoplay){
+        player.play().catch(() => {
+          // Alguns navegadores bloqueiam reprodução automática.
+        });
+      }
+    }
+
+    player.addEventListener("ended", () => {
+      loadTrack(current + 1, true);
+    });
+
+    loadTrack(0, false);
+  </script>
+</body>
+</html>
